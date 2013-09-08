@@ -31,5 +31,5 @@ class hubot::package (
     require     => Package['npm'],
   }
   #ensure_resource( 'package', "hubot-$adapter", { ensure => present, provider => 'npm' })
-  ensure_resource( 'nodejs::npm', "/opt/${user}:hubot-${adapter}", { ensure => present })
+  #ensure_resource( 'nodejs::npm', "/opt/${user}:hubot-${adapter}", { ensure => present })
 }

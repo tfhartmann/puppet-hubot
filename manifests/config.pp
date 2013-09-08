@@ -14,7 +14,8 @@ class hubot::config (
 
   file { '/etc/init.d/hubot':
     ensure  => 'present',
-    content => template('hubot/hubot.init.erb'),
+    #content => template('hubot/hubot.init.erb'),
+    content => template('hubot/hubot.rh.erb'),
     mode    => '0755',
   }
 }
