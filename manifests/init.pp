@@ -55,10 +55,10 @@ class hubot (
 ) {
   include stdlib
   include nodejs
-  include git
 
   anchor { 'hubot::begin': }
   -> class { 'hubot::package':
+    adapter     => $adapter,
     repo_url    => $repo_url,
     repo_ref    => $repo_ref,
     install_dir => $install_dir,

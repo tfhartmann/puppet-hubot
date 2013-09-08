@@ -9,7 +9,7 @@ class hubot::config (
   file { '/etc/default/hubot':
     ensure  => 'present',
     content => template('hubot/default.erb'),
-    mode    => '0600',
+    mode    => '0644',
   }
 
   file { '/etc/init.d/hubot':

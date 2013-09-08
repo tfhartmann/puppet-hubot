@@ -1,4 +1,5 @@
 class hubot::package (
+  $adapter,
   $repo_url,
   $repo_ref,
   $user,
@@ -20,14 +21,15 @@ class hubot::package (
     revision => $repo_ref,
     owner    => $user,
     group    => $group,
-    require  => Package['git'],
   }
 
   exec { 'npm_install_hubot':
-    command => '/usr/bin/npm install',
-    cwd => $install_dir,
+    command     => '/usr/bin/npm install',
+    cwd         => $install_dir,
     refreshonly => true,
-    subscribe => Vcsrepo[$install_dir],
-    require => Package['npm'],
+    subscribe   => Vcsrepo[$install_dir],
+    require     => Package['npm'],
   }
+  #ensure_resource( 'package', "hubot-$adapter", { ensure => present, provider => 'npm' })
+  ensure_resource( 'nodejs::npm', "/opt/${user}:hubot-${adapter}", { ensure => present })
 }
